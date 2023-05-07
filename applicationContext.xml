@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- <bean id="tv" class="jeonggeun.spring.polymorphism.SamsungTV" init-method="start" 
+		destroy-method="stop"/> -->
+	<!-- <bean id="tv1" class="jeonggeun.spring.polymorphism.SamsungTV" lazy-init="true"/> 
+		지연로딩(lazy-init : 객체를 미리 만들지 않는다) <bean id="tv2" class="jeonggeun.spring.polymorphism.LgTV" 
+		/> -->
+
+	<!-- <bean id="tv" class="jeonggeun.spring.polymorphism.SamsungTV" /> --> <!-- (scope="singleton)이 생략되어있다 -->
+	<!--  
+	<bean id="tv" class="jeonggeun.spring.polymorphism.SamsungTV"
+	p:speaker-ref="sony" p:price="280000">-->
+
+	<bean id="tv" class="jeonggeun.spring.polymorphism.SamsungTV"
+	c:speaker-ref="sony" c:price="280000" 
+	
+		<!--  <constructor-arg ref="apple"></constructor-arg>
+		<constructor-arg value="3000000"></constructor-arg>-->
+	</beans>
+	
+	<bean id="sony" class="jeonggeun.spring.polymorphism.SonySpeaker" />
+	<bean id="apple" class="jeonggeun.spring.polymorphism.AppleSpeaker" />
+	
+</beans>
