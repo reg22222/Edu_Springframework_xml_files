@@ -3,27 +3,85 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:c="http://www.springframework.org/schema/c"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<!-- <bean id="tv" class="jeonggeun.spring.polymorphism.SamsungTV" init-method="start" 
-		destroy-method="stop"/> -->
-	<!-- <bean id="tv1" class="jeonggeun.spring.polymorphism.SamsungTV" lazy-init="true"/> 
-		지연로딩(lazy-init : 객체를 미리 만들지 않는다) <bean id="tv2" class="jeonggeun.spring.polymorphism.LgTV" 
-		/> -->
-
-	<!-- <bean id="tv" class="jeonggeun.spring.polymorphism.SamsungTV" /> --> <!-- (scope="singleton)이 생략되어있다 -->
+	
+	<context:component-scan
+		base-package="jeonggeun.spring.web"></context:component-scan>
 	<!--  
-	<bean id="tv" class="jeonggeun.spring.polymorphism.SamsungTV"
-	p:speaker-ref="sony" p:price="280000">-->
+	<bean id="userService"
+		class="jeonggeun.spring.web.user.impl.UserServiceImpl">
+		<property name="userDAO" ref="userDAO" />
+	</bean>
+	<bean id="userDAO" class="jeonggeun.spring.web.user.impl.UserDAO"></bean>
+	-->
+	<!--
+	<bean class="jeonggeun.spring.lifecycle.CustomBeanPostProcessor" />
+ 
+	<bean id="myLifeBean"
+		class="jeonggeun.spring.lifecycle.MyLifeBeanImpl" init-method="init">
+		<property name="greeting">
+			<value>Hello, </value>
+		</property>
+	</bean>
+	
+		<bean id="sony" class="jeonggeun.spring.polymorphism.SonySpeaker"/>
+		
+		
+		<context:component-scan base-package="tommy.spring.polymorphism"></context:component-scan>
+		
+		
+		<bean id="collectionBean"
+		class="jeonggeun.spring.collection.CollectionBean">
+		<property name="addressList">
+		
+		
+		
+		
 
-	<bean id="tv" class="jeonggeun.spring.polymorphism.SamsungTV"
-	c:speaker-ref="sony" c:price="280000" 
-	
-		<!--  <constructor-arg ref="apple"></constructor-arg>
-		<constructor-arg value="3000000"></constructor-arg>-->
-	</beans>
-	
-	<bean id="sony" class="jeonggeun.spring.polymorphism.SonySpeaker" />
-	<bean id="apple" class="jeonggeun.spring.polymorphism.AppleSpeaker" />
-	
+			<set value-type="java.lang.String">
+				<value>서울시 서초구 서초동</value>
+				<value>서울시 동대문구 장안동</value>
+				<value>서울시 동대문구 장안동</value>
+				<value>서울시 동대문구 장안동</value>
+			</set>
+
+			
+			<props>
+				<prop key="홍길동">율도국</prop>
+				<prop key="손오공">화과산</prop>
+			</props>
+
+			
+			<map>
+				<entry>
+					<key>
+						<value>soap</value>
+					</key>
+					<ref bean="soapHandler" />
+				</entry>
+				<entry>
+					<key>
+						<value>rest</value>
+					</key>
+					<ref bean="restHandler" />
+				</entry>
+			</map>
+
+			
+			<list>
+				<value>서울시 서초구 서초동</value>
+				<value>서울시 동대문구 장안동</value>
+			</list>
+			
+
+
+
+
+		</property>
+	</bean> -->
+
+
 </beans>
